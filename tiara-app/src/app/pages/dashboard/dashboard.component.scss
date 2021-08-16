@@ -1,0 +1,108 @@
+// :host {
+//   display: block;
+//   // max-height: 25rem;
+//   // overflow-x: hidden;
+//   overflow-y: auto;
+// }
+
+.card-row {
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.card-col {
+  flex: 1 0 calc(50% - 1rem);
+  margin: 0 0.5rem;
+}
+
+.cursive-font-large {
+  //font-family: Brush Script MT, Brush Script Std, cursive;
+  font-family: 'Dancing Script', cursive;
+  font-size:  150%;
+}
+
+.right-button {
+  float: right;
+}
+
+.nb-small-card {
+  margin: 0 0.5rem;
+  overflow: scroll;
+}
+
+.nb-right-small-card {
+  margin: 0 0.5rem;
+  overflow: scroll;
+}
+
+.width-25 {
+  width: 25%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  // overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.tiny-card {
+  height: 200px;
+}
+
+.large-card {
+  height: 465px;
+}
+
+.full-large-card {
+  height: 620px;
+}
+
+
+.coming-soon {
+  position: absolute;
+  width: 90%;
+  height: 20px;
+  top: 30%;
+  margin-top: -10px;
+  text-align: center;
+}
+
+.coming-soon-image {
+  width: 50%;
+  height: 200px;
+}

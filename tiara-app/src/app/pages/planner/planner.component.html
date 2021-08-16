@@ -1,0 +1,30 @@
+<div class="row padding-margin">
+  <div class="col-sm-6">
+    <h6 class="cursive-font-small-center">Pending..</h6>
+    <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[doneList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.description}}</div>
+  </div>
+  </div>
+
+
+  <div class="col-sm-6">
+    <h6 class="cursive-font-small-center">Achieved!</h6>
+    <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[todoList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.description}}</div>
+  </div>
+  </div>
+</div>
+
+

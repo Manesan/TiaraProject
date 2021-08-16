@@ -1,0 +1,18 @@
+<!--start of loop-->
+  <div class="row posts-photo-margin" *ngFor="let post of posts">
+    <div class="col-sm-6">
+      <p><nb-icon icon="pin-outline"></nb-icon>{{ post.location }}</p>
+      <img class="posts-photo" src="{{ post.photo }}" />
+      <br />
+      <strong>@{{ post.createdBy.userName }}</strong>
+      <p>{{ post.createdDate | date: "dd/mm/yyyy" }}</p>
+    </div>
+    <div class="col-sm-6">
+      <br />
+      <br />
+      <p>{{ post.caption }}</p>
+    </div>
+  </div>
+  <hr />
+
+<!--end of loop-->

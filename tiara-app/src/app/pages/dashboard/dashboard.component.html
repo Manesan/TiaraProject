@@ -1,0 +1,279 @@
+<div class="split left">
+  <div class="row">
+    <div class="col-sm-6">
+      <nb-flip-card [showToggleButton]="false" [flipped]="flippedTiaraThoughts">
+        <nb-card-front>
+          <nb-card class="nb-right-small-card tiny-card">
+            <nb-card-header class="cursive-font-large">
+              Tiara's Thoughts...
+              <button
+                *ngIf="girlLoggedIn == true"
+                class="right-button"
+                nbTooltip="New thought"
+                nbButton="nbButton"
+                ghost
+                (click)="this.toggleTiaraThoughtsView()"
+              >
+                <nb-icon icon="plus-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-thoughts-tiara [refresh]="refreshThoughts.asObservable()"></app-thoughts-tiara>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card class="nb-right-small-card tiny-card">
+            <nb-card-header class="cursive-font-large">
+              Tiara's Thoughts...
+              <button
+                class="right-button"
+                nbButton="nbButton"
+                ghost
+                (click)="this.toggleTiaraThoughtsView()"
+              >
+                <nb-icon icon="close-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-thoughts-card-back (thoughtAdded)="thoughtAdded($event)"></app-thoughts-card-back>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-back>
+      </nb-flip-card>
+    </div>
+
+    <div class="col-sm-6">
+      <nb-flip-card
+        [showToggleButton]="false"
+        [flipped]="flippedManesanThoughts"
+      >
+        <nb-card-front>
+          <nb-card class="nb-right-small-card tiny-card">
+            <nb-card-header fixed="fixed" class="cursive-font-large">
+              Manesan's Thoughts...
+              <button
+                *ngIf="boyLoggedIn == true"
+                class="right-button"
+                nbTooltip="New thought"
+                nbButton="nbButton"
+                ghost
+                (click)="this.toggleManesanThoughtsView()"
+              >
+                <nb-icon icon="plus-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-thoughts-manesan [refresh]="refreshThoughts.asObservable()"></app-thoughts-manesan>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card class="nb-right-small-card tiny-card">
+            <nb-card-header fixed="fixed" class="cursive-font-large">
+              Manesan's Thoughts...
+              <button
+                class="right-button"
+                nbButton="nbButton"
+                ghost
+                (click)="this.toggleManesanThoughtsView()"
+              >
+                <nb-icon icon="close-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-thoughts-card-back (thoughtAdded)="thoughtAdded($event)"></app-thoughts-card-back>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-back>
+      </nb-flip-card>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-sm-6">
+      <nb-flip-card [showToggleButton]="false" [flipped]="flippedPosts">
+        <nb-card-front>
+          <nb-card [nbSpinner]="loadingPosts" class="nb-small-card large-card">
+            <nb-card-header fixed="fixed" class="cursive-font-large">
+              Posts
+              <button
+                class="right-button"
+                nbTooltip="New post"
+                nbButton="nbButton"
+                ghost
+                (click)="this.togglePostsView()"
+              >
+                <nb-icon icon="plus-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-posts-feed
+                (loading)="this.loadingPosts = $event"
+                [refresh]="refreshPost.asObservable()"
+              ></app-posts-feed>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card class="nb-small-card large-card">
+            <nb-card-header fixed="fixed" class="cursive-font-large">
+              Posts
+              <button
+                class="right-button"
+                nbButton="nbButton"
+                ghost
+                (click)="this.togglePostsView()"
+              >
+                <nb-icon icon="close-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-posts-feed-card-back
+                (refresh)="refreshPosts($event)"
+              ></app-posts-feed-card-back>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-back>
+      </nb-flip-card>
+    </div>
+
+    <div class="col-sm-6">
+      <nb-flip-card [showToggleButton]="false" [flipped]="flippedPlanner">
+        <nb-card-front>
+          <nb-card class="nb-small-card large-card">
+            <nb-card-header fixed="fixed" class="cursive-font-large">
+              Milestone Planner
+              <button
+                class="right-button"
+                nbTooltip="New milestone"
+                nbButton="nbButton"
+                ghost
+                (click)="this.togglePlannerView()"
+              >
+                <nb-icon icon="plus-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-planner [refresh]="refresh.asObservable()"></app-planner>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card class="nb-small-card large-card">
+            <nb-card-header fixed="fixed" class="cursive-font-large">
+              Milestone Planner
+              <button
+                class="right-button"
+                nbButton="nbButton"
+                ghost
+                (click)="this.togglePlannerView()"
+              >
+                <nb-icon icon="close-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-planner-card-back
+                (flipCard)="mileStoneAdded()"
+              ></app-planner-card-back>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-back>
+      </nb-flip-card>
+    </div>
+  </div>
+</div>
+
+<div class="split right">
+  <div class="row">
+    <div class="col-sm-6">
+      <nb-card
+        [nbSpinner]="loadingBooth"
+        class="nb-right-small-card"
+        size="medium"
+      >
+        <nb-card-header class="cursive-font-large">Photo Booth</nb-card-header>
+        <app-photo-booth
+          (boothLoaded)="boothLoaded($event)"
+          [refresh]="changeBooth.asObservable()"
+        ></app-photo-booth>
+      </nb-card>
+
+      &nbsp;
+
+      <nb-flip-card [showToggleButton]="false" [flipped]="flippedControlPanel">
+        <nb-card-front>
+          <nb-card
+            [nbSpinner]="loadingGallery"
+            class="nb-right-small-card tiny-card"
+          >
+            <nb-card-header fixed="fixed" class="cursive-font-large">
+              Gallery
+              <button
+                class="right-button"
+                nbTooltip="New album"
+                nbButton="nbButton"
+                ghost
+                (click)="this.toggleControlPanelView()"
+              >
+                <nb-icon icon="plus-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-gallery-control-panel
+                (galleryLoaded)="this.loadingGallery = $event"
+                [refresh]="refreshGalleryPanel.asObservable()"
+                (newBooth)="newBooth($event)"
+                (flipCard)="this.toggleControlPanelView()"
+              ></app-gallery-control-panel>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card class="nb-right-small-card tiny-card">
+            <nb-card-header fixed="fixed" class="cursive-font-large">
+              Gallery
+              <button
+                class="right-button"
+                nbButton="nbButton"
+                ghost
+                (click)="this.toggleControlPanelView()"
+              >
+                <nb-icon icon="close-outline"></nb-icon>
+              </button>
+            </nb-card-header>
+            <nb-card-body>
+              <app-gallery-control-panel-card-back
+                (refresh)="refreshGallery($event)"
+              ></app-gallery-control-panel-card-back>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-back>
+      </nb-flip-card>
+    </div>
+
+    <div class="col-sm-6">
+      <!-- <nb-card class="nb-right-small-card">
+        <nb-card-header class="cursive-font-large">Chat Box</nb-card-header>
+        <app-chat-box></app-chat-box>
+      </nb-card> -->
+      <nb-card class="nb-right-small-card full-large-card">
+        <nb-card-header class="cursive-font-large">Coming Soon...</nb-card-header>
+        <div class="coming-soon">
+          <img class="coming-soon-image" src="../../../assets/warning2.png">
+        </div>
+      </nb-card>
+      <br>
+      <div class="col-sm-12">
+        <button (click)="logout()" fullWidth size="small" nbButton status="dark" ghost >
+          <nb-icon icon="undo-outline"></nb-icon>
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

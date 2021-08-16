@@ -1,0 +1,33 @@
+<input
+  type="file"
+  style="display: none"
+  (change)="onFileSelect($event)"
+  multiple
+  #fileSelect
+/>
+
+<div class="row">
+  <div class="col-sm-12">
+    <input nbInput placeholder="Album title" [(ngModel)]="dataModel.title" />
+    <button
+      class="right-button"
+      nbButton
+      hero
+      size="medium"
+      (click)="fileSelect.click()"
+      nbTooltip="Upload Images"
+    >
+      <nb-icon icon="image-outline"></nb-icon>
+    </button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-12">
+    <button nbButton="nbButton" ghost (click)="showImageList()">
+      <nb-icon icon="list-outline"></nb-icon>
+      Image List
+    </button>
+    <button class="right-button"  nbButton="nbButton" (click)="submitAlbum()" >Add</button>
+  </div>
+</div>

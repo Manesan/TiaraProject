@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-sm-12">
+    <textarea
+      rows="10"
+      fullWidth
+      nbInput
+      placeholder="What's next?"
+      [(ngModel)]="description"
+    ></textarea>
+  </div>
+  <div class="col-sm-12">
+    <button class="right-button" (click)="createMilestone()" nbButton>
+      Add
+    </button>
+  </div>
+</div>

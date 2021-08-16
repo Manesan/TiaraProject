@@ -1,0 +1,19 @@
+<div class="loginbox">
+  <nb-card>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-sm-12">
+          <input nbInput size="large" type="email" placeholder="Email" [(ngModel)]="dataModel.email" fullWidth>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-12">
+          <input nbInput size="large" type="password" placeholder="Password" [(ngModel)]="dataModel.password" fullWidth>
+        </div>
+      </div>
+      <br>
+      <button nbButton status="info" fullWidth (click)="authenticate()">Log In</button>
+    </nb-card-body>
+  </nb-card>
+</div>

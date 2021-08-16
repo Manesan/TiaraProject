@@ -1,0 +1,27 @@
+<nb-list >
+
+  <!--start of loop-->
+  <nb-list-item *ngFor="let album of albums">
+    <img class="album-cover" src="{{album.photos[0].image}}" />
+    &nbsp;
+    <div>
+      {{album.title}}
+    </div>
+
+    &nbsp;
+    <div class="row">
+      <!-- <div class="col-sm-2">
+        <button nbButton ghost nbTooltip="Edit album" (click)="onEdit()"><nb-icon icon="edit-outline" ></nb-icon></button>
+      </div>
+      &nbsp; -->
+      <div class="col-sm-2">
+        <button (click)="play(album)" *ngIf="album.playOnBooth" nbButton ghost nbTooltip="Play on photo booth"><nb-icon icon="play-circle-outline" status="primary"></nb-icon></button>
+        <button (click)="play(album)" *ngIf="!album.playOnBooth" nbButton ghost nbTooltip="Play on photo booth"><nb-icon icon="play-circle-outline" status="basic" ></nb-icon></button>
+      </div>
+    </div>
+
+  </nb-list-item>
+
+  <!--end of loop-->
+
+</nb-list>

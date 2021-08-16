@@ -1,0 +1,30 @@
+<input
+  type="file"
+  style="display: none"
+  (change)="onFileSelect($event)"
+  multiple
+  #fileSelect
+/>
+
+<div class="row">
+  <div class="col-sm-12">
+    <textarea nbInput rows="10" placeholder="Post description" [(ngModel)]="dataModel.caption" ></textarea>
+    <button
+      class="right-button"
+      nbButton
+      hero
+      size="medium"
+      (click)="fileSelect.click()"
+      nbTooltip="Upload Image"
+    >
+      <nb-icon icon="image-outline"></nb-icon>
+    </button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-12">
+    <input nbInput placeholder="Location" [(ngModel)]="dataModel.location" />
+    <button class="right-button" nbButton="nbButton" (click)="submit()">Post</button>
+  </div>
+</div>
